@@ -20,8 +20,9 @@ export default function App() {
   const onGameOver = () => setIsGameOver(true);
 
   const renderScreen = () => {
-    if (userNumber && isGameOver) return <GameOverScreen />;
-    else {
+    if (userNumber && isGameOver) {
+      return <GameOverScreen />;
+    } else {
       if (userNumber)
         return <GameScreen userNumber={userNumber} onGameOver={onGameOver} />;
       else return <StartGameScreen onNumberPick={onNumberPick} />;

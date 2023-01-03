@@ -2,6 +2,9 @@ import { FC, useState } from "react";
 import { Alert, StyleSheet, TextInput, View } from "react-native";
 import PrimaryButton from "../components/PrimaryButton";
 import { theme } from "../theme";
+import Title from "../components/Title";
+import Card from "../components/Card";
+import InstructionText from "../components/InstructionText";
 
 interface IProps {
   onNumberPick: (value: number | null) => void;
@@ -34,22 +37,26 @@ const StartGameScreen: FC<IProps> = ({ onNumberPick }: IProps) => {
   };
 
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.input}
-        maxLength={2}
-        keyboardType="number-pad"
-        value={value}
-        onChangeText={onTextChange}
-      />
-      <View style={styles.buttonsContainer}>
-        <View style={styles.buttonContainer}>
-          <PrimaryButton onPress={onResetPress}>Reset</PrimaryButton>
+    <View style={styles.screenContainer}>
+      <Title>Start Game!</Title>
+      <Card>
+        <InstructionText>Your Number</InstructionText>
+        <TextInput
+          style={styles.input}
+          maxLength={2}
+          keyboardType="number-pad"
+          value={value}
+          onChangeText={onTextChange}
+        />
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={onResetPress}>Reset</PrimaryButton>
+          </View>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={onConfirmPress}>Confirm</PrimaryButton>
+          </View>
         </View>
-        <View style={styles.buttonContainer}>
-          <PrimaryButton onPress={onConfirmPress}>Confirm</PrimaryButton>
-        </View>
-      </View>
+      </Card>
     </View>
   );
 };
@@ -57,22 +64,10 @@ const StartGameScreen: FC<IProps> = ({ onNumberPick }: IProps) => {
 export default StartGameScreen;
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    justifyContent: "center",
-    alignItems: "center",
+  screenContainer: {
+    flex: 1,
+    paddingHorizontal: 24,
     marginTop: 100,
-    marginHorizontal: 24,
-    backgroundColor: theme.bg,
-    padding: 16,
-    borderRadius: 8,
-    elevation: 4,
-    shadowColor: "black",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 6,
   },
   input: {
     color: theme.yellow,

@@ -3,6 +3,8 @@ import { Alert, StyleSheet, Text, View } from "react-native";
 import Title from "../components/Title";
 import GuessedNumber from "../components/game/GuessedNumber";
 import PrimaryButton from "../components/PrimaryButton";
+import Card from "../components/Card";
+import InstructionText from "../components/InstructionText";
 
 interface IProps {
   userNumber: number;
@@ -54,8 +56,10 @@ const GameScreen: FC<IProps> = ({ userNumber, onGameOver }: IProps) => {
       <View style={styles.numberContainer}>
         <GuessedNumber>{guessedNumber}</GuessedNumber>
       </View>
-      <View>
-        <Text style={styles.higherText}>Higher or Lower?</Text>
+      <Card>
+        <InstructionText style={styles.higherText}>
+          Higher or Lower?
+        </InstructionText>
         <View style={styles.buttonsContainer}>
           <View style={styles.buttonContainer}>
             <PrimaryButton onPress={() => onNextNumber(true)}>-</PrimaryButton>
@@ -64,7 +68,7 @@ const GameScreen: FC<IProps> = ({ userNumber, onGameOver }: IProps) => {
             <PrimaryButton onPress={() => onNextNumber(false)}>+</PrimaryButton>
           </View>
         </View>
-      </View>
+      </Card>
     </View>
   );
 };
@@ -88,7 +92,7 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     flexDirection: "row",
-    marginTop: 16,
+    marginTop: 32,
   },
   buttonContainer: {
     flex: 1,
