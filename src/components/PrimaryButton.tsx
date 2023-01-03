@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   innerContainer: {
     backgroundColor: theme.buttonBg,
     paddingHorizontal: 16,
-    paddingVertical: 8,
+    paddingVertical: 12,
   },
   text: {
     color: "white",

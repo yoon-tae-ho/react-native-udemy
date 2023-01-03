@@ -1,8 +1,12 @@
 import { FC } from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 
 const GameOverScreen: FC = () => {
-  return <View></View>;
+  return (
+    <View>
+      <Text>Game is Over!!</Text>
+    </View>
+  );
 };
 
 export default GameOverScreen;
