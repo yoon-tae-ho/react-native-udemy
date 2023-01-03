@@ -1,8 +1,12 @@
 import { FC } from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 
 const GameScreen: FC = () => {
-  return <View></View>;
+  return (
+    <View>
+      <Text>Game Screen</Text>
+    </View>
+  );
 };
 
 export default GameScreen;
