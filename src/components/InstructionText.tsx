@@ -27,6 +27,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 32,
     color: theme.yellow,
-    fontWeight: "700",
+    fontFamily: "open-sans-regular",
   },
 });

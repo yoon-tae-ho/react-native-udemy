@@ -9,6 +9,7 @@ import InstructionText from "../components/InstructionText";
 interface IProps {
   userNumber: number;
   onGameOver: () => void;
+  onNextRound: () => void;
 }
 
 const getRandomBetween = (
@@ -16,18 +17,22 @@ const getRandomBetween = (
   max: number,
   exclude?: number
 ): number => {
-  if (min >= max) return min;
+  if (min >= max || max - min === 1) return min;
 
   const random = Math.floor(Math.random() * (max - min)) + min;
 
   if (exclude && random === exclude) return getRandomBetween(min, max, exclude);
-  return random;
+  else return random;
 };
 
 let min = 1,
   max = 100;
 
-const GameScreen: FC<IProps> = ({ userNumber, onGameOver }: IProps) => {
+const GameScreen: FC<IProps> = ({
+  userNumber,
+  onGameOver,
+  onNextRound,
+}: IProps) => {
   const [guessedNumber, setGuessedNumber] = useState<number>(
     getRandomBetween(min, max, userNumber)
   );
@@ -35,6 +40,11 @@ const GameScreen: FC<IProps> = ({ userNumber, onGameOver }: IProps) => {
   useEffect(() => {
     if (guessedNumber === userNumber) onGameOver();
   }, [guessedNumber, userNumber]);
+
+  useEffect(() => {
+    min = 0;
+    max = 0;
+  }, []);
 
   const onNextNumber = (isLower: boolean) => {
     if (
@@ -48,6 +58,7 @@ const GameScreen: FC<IProps> = ({ userNumber, onGameOver }: IProps) => {
     if (isLower) max = guessedNumber;
     else min = guessedNumber + 1;
     setGuessedNumber(getRandomBetween(min, max));
+    onNextRound();
   };
 
   return (

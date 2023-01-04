@@ -7,7 +7,7 @@ import Card from "../components/Card";
 import InstructionText from "../components/InstructionText";
 
 interface IProps {
-  onNumberPick: (value: number | null) => void;
+  onNumberPick: (value: number) => void;
 }
 
 const StartGameScreen: FC<IProps> = ({ onNumberPick }: IProps) => {
