@@ -21,7 +21,9 @@ const CategoryGridTile: FC<IProps> = ({ item }: IProps) => {
     useNavigation<NativeStackNavigationProp<IRootStackParamList>>();
 
   const onPress = () => {
-    navigation.navigate("mealsOverview");
+    navigation.navigate("mealsOverview", {
+      categoryId: item.id,
+    });
   };
 
   return (
