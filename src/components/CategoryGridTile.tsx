@@ -8,13 +8,22 @@ import {
   GestureResponderEvent,
 } from "react-native";
 import { ICategoryItem } from "../screens/CategoriesScreen";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { IRootStackParamList } from "../../App";
 
 interface IProps {
   item: ICategoryItem;
-  onPress?: (event: GestureResponderEvent) => void;
 }
 
-const CategoryGridTile: FC<IProps> = ({ item, onPress }: IProps) => {
+const CategoryGridTile: FC<IProps> = ({ item }: IProps) => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<IRootStackParamList>>();
+
+  const onPress = () => {
+    navigation.navigate("mealsOverview");
+  };
+
   return (
     <View style={styles.gridItem}>
       <Pressable
