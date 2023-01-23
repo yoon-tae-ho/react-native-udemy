@@ -1,13 +1,23 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import StackNavigator from "./src/navigators/StackNavigator";
 
 const App = () => {
   return (
-    <View>
+    <View style={styles.appContainer}>
       <StatusBar style="light" />
-      <Text>Hello World!</Text>
+      <NavigationContainer>
+        <StackNavigator />
+      </NavigationContainer>
     </View>
   );
 };
 
 export default App;
+
+const styles = StyleSheet.create({
+  appContainer: {
+    flex: 1,
+  },
+});
