@@ -3,6 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
 import Input from "../ui/Input";
 import { themeColors } from "../../constants/colors";
+import ImagePicker from "./ImagePicker";
 
 interface IForm {
   name: string;
@@ -21,6 +22,8 @@ const PlaceForm: FC = () => {
         <Text style={styles.label}>Place Name</Text>
         <Input style={styles.input} name="name" control={control} />
       </View>
+      {/* Camera */}
+      <ImagePicker />
       {/* Submit Button */}
       <Button title="Submit" onPress={handleSubmit(onSubmit)} />
     </ScrollView>
