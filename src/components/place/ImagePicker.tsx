@@ -5,8 +5,9 @@ import {
   requestCameraPermissionsAsync,
 } from "expo-image-picker";
 import { FC, useState } from "react";
-import { Button, Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import { themeColors } from "../../constants/colors";
+import OutlinedButton from "../ui/OutlinedButton";
 
 const verifyPermission = async () => {
   const result = await getCameraPermissionsAsync();
@@ -19,7 +20,7 @@ const verifyPermission = async () => {
     case PermissionStatus.DENIED:
       return false;
     case PermissionStatus.UNDETERMINED:
-      return (await requestCameraPermissionsAsync()).granted;
+      return (await requestCameraPermissionsAsync())?.granted;
     default:
       false;
   }
@@ -52,7 +53,9 @@ const ImagePicker: FC = () => {
           <Image style={styles.previewImage} source={{ uri: imageUri }} />
         </View>
       )}
-      <Button title="Camera" onPress={onPress} />
+      <OutlinedButton iconName="camera" onPress={onPress}>
+        Camera
+      </OutlinedButton>
     </View>
   );
 };

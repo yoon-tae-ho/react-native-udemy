@@ -1,9 +1,11 @@
 import { FC } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import Input from "../ui/Input";
 import { themeColors } from "../../constants/colors";
 import ImagePicker from "./ImagePicker";
+import OutlinedButton from "../ui/OutlinedButton";
+import LocationPicker from "./LocationPicker";
 
 interface IForm {
   name: string;
@@ -22,10 +24,12 @@ const PlaceForm: FC = () => {
         <Text style={styles.label}>Place Name</Text>
         <Input style={styles.input} name="name" control={control} />
       </View>
-      {/* Camera */}
+      {/* Location Picker */}
+      <LocationPicker />
+      {/* Image Picker */}
       <ImagePicker />
       {/* Submit Button */}
-      <Button title="Submit" onPress={handleSubmit(onSubmit)} />
+      <OutlinedButton onPress={handleSubmit(onSubmit)}>Submit</OutlinedButton>
     </ScrollView>
   );
 };

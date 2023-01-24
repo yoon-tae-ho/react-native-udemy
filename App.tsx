@@ -1,16 +1,19 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import StackNavigator from "./src/navigators/StackNavigator";
+import { RecoilRoot } from "recoil";
 
 const App = () => {
   return (
-    <View style={styles.appContainer}>
-      <StatusBar style="light" />
-      <NavigationContainer>
-        <StackNavigator />
-      </NavigationContainer>
-    </View>
+    <RecoilRoot>
+      <View style={styles.appContainer}>
+        <StatusBar style="light" />
+        <NavigationContainer>
+          <StackNavigator />
+        </NavigationContainer>
+      </View>
+    </RecoilRoot>
   );
 };
 

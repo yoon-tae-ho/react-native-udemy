@@ -4,8 +4,15 @@ import AllPlaces from "../screens/AllPlaces";
 import AddPlace from "../screens/AddPlace";
 import IconButton from "../components/ui/IconButton";
 import { themeColors } from "../constants/colors";
+import MapScreen from "../screens/MapScreen";
 
-export const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+  AllPlaces: undefined;
+  AddPlace: undefined;
+  Map: undefined;
+};
+
+export const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const StackNavigator: FC = () => {
   return (
@@ -27,7 +34,7 @@ const StackNavigator: FC = () => {
           title: "Your Favorite Places!",
           headerRight: ({ tintColor }) => (
             <IconButton
-              key={`header-right-button-${Date.now()}`}
+              key={`all-places-header-right-button-${Date.now()}`}
               iconName="add"
               size={24}
               color={tintColor}
@@ -42,6 +49,21 @@ const StackNavigator: FC = () => {
         options={{
           title: "Add a Place!",
         }}
+      />
+      <Stack.Screen
+        name="Map"
+        component={MapScreen}
+        options={({ navigation }) => ({
+          headerRight: ({ tintColor }) => (
+            <IconButton
+              key={`map-screen-header-right-button-${Date.now()}`}
+              iconName="save"
+              size={24}
+              color={tintColor}
+              onPress={() => navigation.navigate("AddPlace")}
+            />
+          ),
+        })}
       />
     </Stack.Navigator>
   );
